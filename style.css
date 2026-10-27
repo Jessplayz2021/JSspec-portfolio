@@ -1,0 +1,38 @@
+html{
+    scroll-behavior: smooth;
+}
+body {
+
+    background-color: blue;
+    padding: 20px;
+
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    background-color: grey;
+    border-radius: 15px;
+    padding: 5px;
+}
+nav a {
+    color:lightgreen;
+    padding: 20px;
+}
+p {
+    color:yellow;
+    font-family: 'Franklin Gothic Medium';
+    
+}
+h1 {
+    color: yellow;
+    margin-bottom: 15px;
+}
+h2 {
+    color: yellow;
+}
+h3 {
+    color: yellow;
+}
+a {
+    color: lightgreen;
+}
