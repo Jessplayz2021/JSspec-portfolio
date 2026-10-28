@@ -13,6 +13,9 @@ nav{
     background-color: rgb(169, 217, 181);
     border-radius: 15px;
     padding: 5px;
+    position: sticky;
+    top: 10px;
+    scroll-margin-top: 15px;
 }
 nav a {
     color:rgb(48, 48, 48);
@@ -37,11 +40,13 @@ h1 {
     margin-bottom: 15px;
     font-family: 'Times New Roman';
     font-weight: 700;
+    scroll-margin-top: 60px;
 }
 h2 {
     color: rgb(169, 217, 181);
     font-family: 'Times New Roman';
     font-weight: 500;
+
 }
 h3 {
     color: rgb(169, 217, 181);
