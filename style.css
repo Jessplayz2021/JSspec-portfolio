@@ -3,36 +3,51 @@ html{
 }
 body {
 
-    background-color: blue;
+    background-color: rgb(48, 48, 48);
     padding: 20px;
 
 }
 nav{
     display: flex;
     justify-content: space-around;
-    background-color: grey;
+    background-color: rgb(169, 217, 181);
     border-radius: 15px;
     padding: 5px;
 }
 nav a {
-    color:lightgreen;
+    color:rgb(88, 88, 88);
     padding: 20px;
+    font-family: 'Times New Roman';
+    font-weight: 300;
 }
 p {
-    color:yellow;
-    font-family: 'Franklin Gothic Medium';
+    color:rgb(177, 177, 177);
+    font-family:'Segoe UI';
     
 }
 h1 {
-    color: yellow;
+    color: rgb(169, 217, 181);
     margin-bottom: 15px;
+    font-family: 'Times New Roman';
+    font-weight: 700;
 }
 h2 {
-    color: yellow;
+    color: rgb(169, 217, 181);
+    font-family: 'Times New Roman';
+    font-weight: 500;
 }
 h3 {
-    color: yellow;
+    color: rgb(169, 217, 181);
+    font-family: 'Times New Roman';
+    font-weight:500;
 }
-a {
-    color: lightgreen;
+.github_and_linkedin {
+    color: rgb(184, 217, 197);
+    transition: color 300ms ease-in-out;
+    font-family:'Segoe UI';
+    font-weight: 500;
+}
+.github_and_linkedin:hover{
+    color: rgb(252, 80, 80);
+
 }
