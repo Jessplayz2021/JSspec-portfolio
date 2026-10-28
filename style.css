@@ -63,3 +63,12 @@ h3 {
     color: rgb(252, 80, 80);
 
 }
+.email_address{
+    color:rgb(184, 217, 197);
+    transition: color 300ms ease-in-out;
+    font-family:'Segoe UI';
+    font-weight: 500;
+}
+.email_address:hover{
+    color: rgb(252, 80, 80);
+}
