@@ -1,3 +1,9 @@
+:root{
+    --eco: rgb(169, 217, 181);
+    --sport: rgb(250, 192, 0);
+    --race: rgb(163, 17, 17);
+}
+
 html{
     scroll-behavior: smooth;
 }
@@ -10,7 +16,7 @@ body {
 nav{
     display: flex;
     justify-content: space-around;
-    background-color: rgb(169, 217, 181);
+    background-color: var(--eco);
     border-radius: 15px;
     padding: 5px;
     position: sticky;
@@ -27,7 +33,7 @@ nav a {
     padding: 5px;
 }
 nav a:hover{
-    color:  rgb(169, 217, 181);
+    color:  var(--eco);
     background-color: rgb(48, 48, 48);
 }
 p {
@@ -36,25 +42,25 @@ p {
     
 }
 h1 {
-    color: rgb(169, 217, 181);
+    color: var(--eco);
     margin-bottom: 15px;
     font-family: 'Times New Roman';
     font-weight: 700;
     scroll-margin-top: 60px;
 }
 h2 {
-    color: rgb(169, 217, 181);
+    color: var(--eco);
     font-family: 'Times New Roman';
     font-weight: 500;
 
 }
 h3 {
-    color: rgb(169, 217, 181);
+    color: var(--eco);
     font-family: 'Times New Roman';
     font-weight:500;
 }
 .github_and_linkedin {
-    color: rgb(184, 217, 197);
+    color: var(--eco);
     transition: color 300ms ease-in-out;
     font-family:'Segoe UI';
     font-weight: 500;
@@ -64,7 +70,7 @@ h3 {
 
 }
 .email_address{
-    color:rgb(184, 217, 197);
+    color:var(--eco);
     transition: color 300ms ease-in-out;
     font-family:'Segoe UI';
     font-weight: 500;
@@ -72,3 +78,4 @@ h3 {
 .email_address:hover{
     color: rgb(252, 80, 80);
 }
+
