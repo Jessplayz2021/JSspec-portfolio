@@ -2,6 +2,7 @@
     --eco: rgb(169, 217, 181);
     --sport: rgb(250, 192, 0);
     --race: rgb(163, 17, 17);
+    --active-colour: var(--eco);
 }
 
 html{
@@ -16,10 +17,11 @@ body {
 nav{
     display: flex;
     justify-content: space-around;
-    background-color: var(--eco);
+    background-color: var(--active-colour);
     border-radius: 15px;
     padding: 5px;
     position: sticky;
+    padding-right: 45px;
     top: 10px;
     scroll-margin-top: 15px;
 }
@@ -33,7 +35,7 @@ nav a {
     padding: 5px;
 }
 nav a:hover{
-    color:  var(--eco);
+    color:  var(--active-colour);
     background-color: rgb(48, 48, 48);
 }
 p {
@@ -42,25 +44,25 @@ p {
     
 }
 h1 {
-    color: var(--eco);
+    color: var(--active-colour);
     margin-bottom: 15px;
     font-family: 'Times New Roman';
     font-weight: 700;
     scroll-margin-top: 60px;
 }
 h2 {
-    color: var(--eco);
+    color: var(--active-colour);
     font-family: 'Times New Roman';
     font-weight: 500;
 
 }
 h3 {
-    color: var(--eco);
+    color: var(--active-colour);
     font-family: 'Times New Roman';
     font-weight:500;
 }
 .github_and_linkedin {
-    color: var(--eco);
+    color: var(--active-colour);
     transition: color 300ms ease-in-out;
     font-family:'Segoe UI';
     font-weight: 500;
@@ -70,7 +72,7 @@ h3 {
 
 }
 .email_address{
-    color:var(--eco);
+    color:var(--active-colour);
     transition: color 300ms ease-in-out;
     font-family:'Segoe UI';
     font-weight: 500;
@@ -79,3 +81,65 @@ h3 {
     color: rgb(252, 80, 80);
 }
 
+.settings {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    
+}
+
+#settingsBtn {
+    background: transparent;
+    border: none;
+    color: rgb(48, 48, 48);
+    line-height: 1;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+#settingsBtn:hover {
+    background-color: rgba(48, 48, 48, 0.15);
+}
+
+.settings-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 210px;
+    padding: 15px;
+    background-color: rgb(38, 38, 38);
+    border: 1px solid var(--active-colour);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.settings-panel.open {
+    display: block;
+}
+
+.settings-panel h3 {
+    color: var(--active-colour);
+    margin-top: 0;
+}
+
+.settings-panel button {
+    background-color: rgb(55, 55, 55);
+    color: white;
+    border: 1px solid rgb(85, 85, 85);
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin: 3px;
+    transition: background-color 0.2s ease;
+}
+
+.settings-panel button:hover {
+    background-color: var(--active-colour);
+    color: rgb(30, 30, 30);
+}
