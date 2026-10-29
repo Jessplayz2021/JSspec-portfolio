@@ -101,9 +101,6 @@ h3 {
     transition: background-color 0.3s ease;
 }
 
-#settingsBtn:hover {
-    background-color: rgba(48, 48, 48, 0.15);
-}
 
 .settings-panel {
     display: none;
@@ -142,4 +139,9 @@ h3 {
 .settings-panel button:hover {
     background-color: var(--active-colour);
     color: rgb(30, 30, 30);
+}
+#settingsBtn:hover,
+#settingsBtn.active{
+    background-color: rgba(48, 48, 48);
+    color: var(--active-colour);
 }

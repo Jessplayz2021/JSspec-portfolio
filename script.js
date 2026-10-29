@@ -45,4 +45,7 @@ const settingsPanel = document.getElementById("settingsPanel");
 
 settingsButton.addEventListener("click", function() {
     settingsPanel.classList.toggle("open");
+    settingsButton.classList.toggle("active");
 });
+
+
