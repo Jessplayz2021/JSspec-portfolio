@@ -145,3 +145,12 @@ h3 {
     background-color: rgba(48, 48, 48);
     color: var(--active-colour);
 }
+.project_link {
+    color: var(--active-colour);
+    transition: color 300ms ease-in-out;
+    font-family:'Segoe UI';
+    font-weight: 500;
+}
+.project_link:hover{
+    color: rgb(252, 80, 80);
+}
