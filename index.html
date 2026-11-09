@@ -1,38 +1,119 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101619">
-  <title>Jess Bradford — JS Spec Portfolio Concept</title>
-  <style>
-    :root{color-scheme:dark;--bg:#101619;--panel:#182124;--panel2:#1d292b;--line:#30413e;--text:#eff6f2;--muted:#a4b5ad;--mint:#b3e6c1;--mint-dark:#172d23;--radius:20px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 83% 8%,#20382d 0,transparent 26%),var(--bg);line-height:1.55}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
-    .shell{width:min(1390px,calc(100% - 96px));margin:auto}.nav-wrap{position:sticky;top:16px;z-index:20;padding-top:16px}.nav{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;background:#172123eF;border:1px solid #3a5049;border-radius:16px;backdrop-filter:blur(18px);box-shadow:0 14px 50px #0004}.brand{display:flex;align-items:center;gap:13px;font-weight:800;letter-spacing:.08em}.brand-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--mint);color:#10251a;letter-spacing:-.04em}.nav-links{display:flex;align-items:center;gap:38px;font-size:14px;color:#b9c9c0}.nav-links a:hover,.text-link:hover{color:var(--mint)}.mode{border:1px solid #4a6a57;border-radius:100px;background:#1c3527;color:var(--mint);padding:8px 15px;font-size:12px;font-weight:750;letter-spacing:.09em}.mobile-menu{display:none}
-    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;min-height:650px;padding:95px 0 70px}.eyebrow{color:var(--mint);font-size:12px;letter-spacing:.2em;font-weight:800;text-transform:uppercase}.availability{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;background:#1c3528;border:1px solid #315642;border-radius:30px;color:#c4f3d0;font-size:12px}.dot{width:7px;height:7px;background:#8ceca8;border-radius:50%;box-shadow:0 0 12px #8ceca8}.hero h1{font-size:clamp(64px,6vw,102px);line-height:1.02;letter-spacing:-.075em;margin:27px 0 16px}.hero h1 span{color:var(--mint)}.lead{max-width:590px;font-size:clamp(17px,1.6vw,21px);color:#b7c8bf;margin:0 0 27px}.hero-copy{max-width:560px;font-size:15px;color:#91a49a;margin-bottom:32px}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;gap:18px;padding:14px 22px;border-radius:10px;font-weight:750;font-size:14px;border:1px solid #536c60;transition:transform .18s,background .18s}.btn:hover{transform:translateY(-3px)}.primary{background:var(--mint);color:#112519;border-color:var(--mint)}.secondary{background:#1b2728;color:#e4f0e8}
-    .feature{background:linear-gradient(143deg,#263e32,#192629 48%,#141d21);border:1px solid #425b4e;border-radius:24px;padding:29px;min-height:390px;position:relative;overflow:hidden;box-shadow:0 30px 90px #0005}.feature:before{content:"";position:absolute;width:320px;height:320px;background:#a9eab117;filter:blur(65px);border-radius:50%;right:-90px;top:-90px}.feature-head{display:flex;justify-content:space-between;align-items:center;color:#b1c7b9;font-size:11px;letter-spacing:.15em;font-weight:700}.feature-identity{height:170px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:13px;border:1px solid #3e5c4c;border-radius:13px;background:radial-gradient(circle at 50% 45%,#3f654b66,transparent 67%),#192924;margin:21px 0}.feature-glyph{font-size:62px;line-height:1;font-weight:300;letter-spacing:-.14em;color:var(--mint)}.feature-category{font-size:10px;font-weight:800;letter-spacing:.2em;color:#a8c7b3}.feature h2{font-size:29px;letter-spacing:-.045em;margin:0}.feature p{color:#afc2b5;font-size:14px;margin:6px 0 16px}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{font-size:11px;padding:5px 9px;border:1px solid #4d675b;border-radius:6px;color:#c4d9cd;background:#22352c}
-    .signature{margin:0 0 22px;font-size:13px;color:#9eb5a8;font-style:italic}.signature span{font-style:normal;color:var(--mint);font-weight:800;letter-spacing:.08em}.stack{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;padding:24px 0 30px;border-block:1px solid var(--line);font-size:11px;letter-spacing:.16em;color:#8da69a;font-weight:800}.section{padding:105px 0 20px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px}.section h2{font-size:clamp(36px,4vw,54px);letter-spacing:-.055em;line-height:1.1;margin:12px 0}.section-head p{max-width:470px;color:var(--muted);font-size:15px}.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.project{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .2s,border-color .2s}.project:hover{transform:translateY(-5px);border-color:#658e73}.art{height:190px;background:radial-gradient(circle at 75% 12%,#436d4b44,transparent 55%),linear-gradient(145deg,#233a32,#162227);display:grid;place-items:center}.art{position:relative;justify-content:space-between;align-items:flex-start;padding:23px;background:radial-gradient(circle at 84% 20%,#4e7b5544,transparent 56%),linear-gradient(140deg,#20372f,#152326)}.art-number{font-size:75px;line-height:1;font-weight:800;letter-spacing:-.09em;color:#b3e6c1aa}.art-label{position:absolute;right:20px;bottom:20px;font-size:10px;font-weight:800;letter-spacing:.15em;color:#a5c8b3}.project-body{padding:24px}.project-top{display:flex;justify-content:space-between;gap:10px;align-items:center;color:#9fbcac;font-size:11px;text-transform:uppercase;letter-spacing:.13em}.project h3{font-size:23px;letter-spacing:-.035em;margin:13px 0 7px}.project p{font-size:14px;color:var(--muted);min-height:86px;margin:0 0 18px}.text-link{display:inline-block;color:var(--mint);font-weight:700;font-size:13px;margin-top:20px}
-    .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:85px;align-items:center;padding-bottom:110px}.about h2{margin-bottom:0}.about p{font-size:17px;color:#b0c3b8;line-height:1.8}.callout{border-left:3px solid var(--mint);padding:7px 0 7px 21px;color:#d3e5da;font-size:19px;font-weight:600}.footer{margin-top:90px;border-top:1px solid var(--line);padding:32px 0 50px;display:flex;justify-content:space-between;gap:20px;color:#8b9f94;font-size:13px}.footer a{color:#c0eacb;margin-left:20px}
-    @media(max-width:1000px){.shell{width:min(100% - 56px,900px)}.hero{gap:28px;min-height:560px}.hero h1{font-size:clamp(57px,7vw,80px)}.feature{padding:22px}.project-grid{grid-template-columns:repeat(2,1fr)}.project:last-child{grid-column:span 2}.about{gap:35px}}
-    @media(max-width:700px){.shell{width:calc(100% - 32px)}.nav-wrap{top:8px;padding-top:8px}.nav{height:62px;padding:0 14px}.nav-links{gap:12px}.nav-links a{display:none}.mobile-menu{display:block;font-size:12px;color:#c8dacd}.mode{padding:7px 10px}.hero{grid-template-columns:1fr;padding:55px 0 35px;gap:40px}.hero h1{font-size:clamp(56px,12vw,82px)}.feature{min-height:410px}.stack{justify-content:flex-start;column-gap:25px}.section{padding:65px 0 0}.section-head{display:block}.project-grid{grid-template-columns:1fr}.project:last-child{grid-column:auto}.project p{min-height:0}.about{grid-template-columns:1fr;padding-bottom:50px}.footer{display:block}.footer a{display:inline-block;margin:10px 15px 0 0}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.project{transition:none}}
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101619">
+    <title>Jess Bradford — JS Spec Portfolio Concept</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="nav-wrap"><nav class="nav shell" aria-label="Main navigation"><a class="brand" href="#top"><span class="brand-mark">JS</span><span>JS SPEC</span></a><div class="nav-links"><a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a><span class="mode">● ECO MODE</span></div></nav></div>
-  <main id="top" class="shell">
-    <section class="hero" aria-label="Introduction"><div><span class="availability"><span class="dot"></span> Open to software opportunities</span><h1>Jess<br><span>Bradford.</span></h1><p class="lead">Software developer with an engineering mindset.</p><p class="hero-copy">I build practical applications, explore automation and turn complex problems into clear, useful software. Working with Python, JavaScript and web technologies — with a growing interest in DevOps.</p><div class="actions"><a class="btn primary" href="#projects">Explore my work <span>↗</span></a><a class="btn secondary" href="https://github.com/Jessplayz2021" target="_blank" rel="noopener">GitHub ↗</a></div></div>
-      <article class="feature"><div class="feature-head"><span>FEATURED PROJECT / 001</span><span>↗</span></div><div class="feature-identity"><span class="feature-glyph">{ }</span><span class="feature-category">EDUCATION / AUTOMATION</span></div><h2>OneNudge</h2><p>Helping college tutors reduce repetitive administration through smarter communication workflows.</p><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">In development</span></div></article>
-    </section>
-    <p class="signature">Built with curiosity. Engineered through trial and error. <span>— JS SPEC</span></p><div class="stack"><span>PYTHON</span><span>JAVASCRIPT</span><span>HTML & CSS</span><span>SQLITE</span><span>AUTOMATION</span><span>NETWORKING</span></div>
-    <section id="projects" class="section"><div class="section-head"><div><div class="eyebrow">01 / Selected work</div><h2>Projects built<br>with purpose.</h2></div><p>A selection of personal and practical projects — from automotive software to networking utilities and educational automation.</p></div><div class="project-grid">
-      <article class="project"><div class="art"><span class="art-number">01</span><span class="art-label">AUTOMOTIVE / DATABASE</span></div><div class="project-body"><div class="project-top"><span>Python · SQLite</span><span>01</span></div><h3>Dealership System</h3><p>Simulating dealership operations, including customer journeys, warranty calculations and vehicle-related workflows.</p><div class="chips"><span class="chip">Python</span><span class="chip">SQLite3</span></div><a class="text-link" href="https://github.com/Jessplayz2021/Dealership-management-system" target="_blank" rel="noopener">View source ↗</a></div></article>
-      <article class="project"><div class="art"><span class="art-number">02</span><span class="art-label">NETWORKING / DIAGNOSTICS</span></div><div class="project-body"><div class="project-top"><span>Python · Networking</span><span>02</span></div><h3>JS Network Tool</h3><p>A desktop network diagnostics utility for connection information, Wi-Fi details and TCP port testing.</p><div class="chips"><span class="chip">Sockets</span><span class="chip">GUI</span></div><a class="text-link" href="https://github.com/Jessplayz2021/JS-Network-Scanner" target="_blank" rel="noopener">View source ↗</a></div></article>
-      <article class="project"><div class="art"><span class="art-number">03</span><span class="art-label">BOOKING / PYTHON</span></div><div class="project-body"><div class="project-top"><span>Python · Restoration</span><span>03</span></div><h3>Airline Booking</h3><p>A restored A-level project exploring booking flows, passenger checks and program navigation.</p><div class="chips"><span class="chip">Python</span><span class="chip">Logic</span></div><a class="text-link" href="https://github.com/Jessplayz2021/Python_airline_booking_system" target="_blank" rel="noopener">View source ↗</a></div></article>
-    </div></section>
-    <section id="about" class="section about"><div><div class="eyebrow">02 / About me</div><h2>Curious by<br>design.</h2><div class="callout">From mechanical engineering to software engineering.</div></div><div><p>I'm Jess — a self-taught programmer with a background in hands-on engineering. I enjoy understanding how systems work, finding what can be improved, and building software that makes things easier.</p><p>Whether it's a Python application, a network tool or a solution for a real user, I like learning by building. My long-term direction is software engineering and DevOps.</p><a href="mailto:jsspec.contact@gmail.com" class="btn secondary">Get in touch ↗</a></div></section>
-  </main>
-  <footer id="contact" class="footer shell"><span>© <span id="year">2026</span> Jess Bradford · JS Spec · Concept design</span><div><a href="mailto:jsspec.contact@gmail.com">Email</a><a href="https://github.com/Jessplayz2021">GitHub</a><a href="https://www.linkedin.com/in/jess-bradford-b81227346/">LinkedIn</a></div></footer>
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+    <div class="nav-wrap">
+        <nav class="nav shell" aria-label="Main navigation"><a class="brand" href="#top"><span
+                    class="brand-mark">JS</span><span>JS SPEC</span></a>
+            <div class="nav-links"><a href="#projects">Projects</a><a href="#about">About</a><a
+                    href="#contact">Contact</a><span class="mode">● ECO MODE</span></div>
+        </nav>
+    </div>
+    <main id="top" class="shell">
+        <section class="hero" aria-label="Introduction">
+            <div><span class="availability"><span class="dot"></span> Open to software opportunities</span>
+                <h1>Jess<br><span>Bradford.</span></h1>
+                <p class="lead">Software developer with an engineering mindset.</p>
+                <p class="hero-copy">I build practical applications, explore automation and turn complex problems into
+                    clear, useful software. Working with Python, JavaScript and web technologies — with a growing
+                    interest in DevOps.</p>
+                <div class="actions"><a class="btn primary" href="#projects">Explore my work <span>↗</span></a><a
+                        class="btn secondary" href="https://github.com/Jessplayz2021" target="_blank"
+                        rel="noopener">GitHub ↗</a></div>
+            </div>
+            <article class="feature">
+                <div class="feature-head"><span>FEATURED PROJECT / 001</span><span>↗</span></div>
+                <div class="feature-identity"><span class="feature-glyph">{ }</span><span
+                        class="feature-category">EDUCATION / AUTOMATION</span></div>
+                <h2>OneNudge</h2>
+                <p>Helping college tutors reduce repetitive administration through smarter communication workflows.</p>
+                <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span
+                        class="chip">JavaScript</span><span class="chip">In development</span></div>
+            </article>
+        </section>
+        <p class="signature">Built with curiosity. Engineered through trial and error. <span>— JS SPEC</span></p>
+        <div class="stack"><span>PYTHON</span><span>JAVASCRIPT</span><span>HTML &
+                CSS</span><span>SQLITE</span><span>AUTOMATION</span><span>NETWORKING</span></div>
+        <section id="projects" class="section">
+            <div class="section-head">
+                <div>
+                    <div class="eyebrow">01 / Selected work</div>
+                    <h2>Projects built<br>with purpose.</h2>
+                </div>
+                <p>A selection of personal and practical projects — from automotive software to networking utilities and
+                    educational automation.</p>
+            </div>
+            <div class="project-grid">
+                <article class="project">
+                    <div class="art"><span class="art-number">01</span><span class="art-label">AUTOMOTIVE /
+                            DATABASE</span></div>
+                    <div class="project-body">
+                        <div class="project-top"><span>Python · SQLite</span><span>01</span></div>
+                        <h3>Dealership System</h3>
+                        <p>Simulating dealership operations, including customer journeys, warranty calculations and
+                            vehicle-related workflows.</p>
+                        <div class="chips"><span class="chip">Python</span><span class="chip">SQLite3</span></div><a
+                            class="text-link" href="https://github.com/Jessplayz2021/Dealership-management-system"
+                            target="_blank" rel="noopener">View source ↗</a>
+                    </div>
+                </article>
+                <article class="project">
+                    <div class="art"><span class="art-number">02</span><span class="art-label">NETWORKING /
+                            DIAGNOSTICS</span></div>
+                    <div class="project-body">
+                        <div class="project-top"><span>Python · Networking</span><span>02</span></div>
+                        <h3>JS Network Tool</h3>
+                        <p>A desktop network diagnostics utility for connection information, Wi-Fi details and TCP port
+                            testing.</p>
+                        <div class="chips"><span class="chip">Sockets</span><span class="chip">GUI</span></div><a
+                            class="text-link" href="https://github.com/Jessplayz2021/JS-Network-Scanner" target="_blank"
+                            rel="noopener">View source ↗</a>
+                    </div>
+                </article>
+                <article class="project">
+                    <div class="art"><span class="art-number">03</span><span class="art-label">BOOKING / PYTHON</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-top"><span>Python · Restoration</span><span>03</span></div>
+                        <h3>Airline Booking</h3>
+                        <p>A restored A-level project exploring booking flows, passenger checks and program navigation.
+                        </p>
+                        <div class="chips"><span class="chip">Python</span><span class="chip">Logic</span></div><a
+                            class="text-link" href="https://github.com/Jessplayz2021/Python_airline_booking_system"
+                            target="_blank" rel="noopener">View source ↗</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section id="about" class="section about">
+            <div>
+                <div class="eyebrow">02 / About me</div>
+                <h2>Curious by<br>design.</h2>
+                <div class="callout">From mechanical engineering to software engineering.</div>
+            </div>
+            <div>
+                <p>I'm Jess — a self-taught programmer with a background in hands-on engineering. I enjoy understanding
+                    how systems work, finding what can be improved, and building software that makes things easier.</p>
+                <p>Whether it's a Python application, a network tool or a solution for a real user, I like learning by
+                    building. My long-term direction is software engineering and DevOps.</p><a
+                    href="mailto:jsspec.contact@gmail.com" class="btn secondary">Get in touch ↗</a>
+            </div>
+        </section>
+    </main>
+    <footer id="contact" class="footer shell"><span>© <span id="year">2026</span> Jess Bradford · JS Spec · Concept
+            design</span>
+        <div><a href="mailto:jsspec.contact@gmail.com">Email</a><a href="https://github.com/Jessplayz2021">GitHub</a><a
+                href="https://www.linkedin.com/in/jess-bradford-b81227346/">LinkedIn</a></div>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
+
 </html>
