@@ -54,16 +54,9 @@ button {
 }
 
 .nav {
-    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 26px;
-    background: var(--eco);
-    border: 1px solid var(--eco);
-    border-radius: 16px;
-    backdrop-filter: blur(18px);
-    box-shadow: 0 14px 50px #0004
 }
 
 .brand {
@@ -99,14 +92,14 @@ button {
 }
 
 .mode {
+    background: #1c3527;
+    color: var(--eco);
     border: 1px solid #4a6a57;
     border-radius: 100px;
-    background: #1c3527;
-    color: var(--mint);
     padding: 8px 15px;
     font-size: 12px;
     font-weight: 750;
-    letter-spacing: .09em
+    cursor: pointer;
 }
 
 .mobile-menu {
@@ -700,19 +693,6 @@ h3 {
     transform: translateY(-50%);
 
 }
-
-#settingsBtn {
-    background: transparent;
-    border: none;
-    color: rgb(48, 48, 48);
-    line-height: 1;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
-
 
 .settings-panel {
     display: none;

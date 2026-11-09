@@ -14,7 +14,15 @@
         <nav class="nav shell" aria-label="Main navigation"><a class="brand" href="#top"><span
                     class="brand-mark">JS</span><span>JS SPEC</span></a>
             <div class="nav-links"><a href="#projects">Projects</a><a href="#about">About</a><a
-                    href="#contact">Contact</a><span class="mode">● ECO MODE</span></div>
+                    href="#contact">Contact</a></div>
+            <button class="mode" id="settingsBtn">
+                ● ECO MODE
+            </button>
+            <div class="settings-panel" id="settingsPanel">
+                <button id="ecoBtn">Eco</button>
+                <button id="sportBtn">Sport</button>
+                <button id="raceBtn">Race</button>
+            </div>
         </nav>
     </div>
     <main id="top" class="shell">
@@ -114,6 +122,7 @@
                 href="https://www.linkedin.com/in/jess-bradford-b81227346/">LinkedIn</a></div>
     </footer>
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script src="script.js"></script>
 </body>
 
 </html>
