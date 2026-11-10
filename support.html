@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#202423">
+    <meta name="description" content="Contact JS Spec about OneNudge, the website, or a technical issue.">
+    <title>Support — JS Spec</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modes.css">
+</head>
+<body class="subpage" data-mode="eco">
+    <div class="nav-wrap">
+        <nav class="nav shell" aria-label="Main navigation">
+            <a class="brand" href="index.html"><span class="brand-mark">JS</span><span>JS SPEC</span></a>
+            <div class="nav-links"><a href="index.html#projects">Projects</a><a href="sport.html">Engineering</a><a href="race.html">Race</a></div>
+            <div class="mode-wrap">
+                <button class="mode" id="settingsBtn" type="button" aria-expanded="false" aria-controls="settingsPanel">● ECO MODE</button>
+                <div class="settings-panel" id="settingsPanel" role="group" aria-label="Choose JS Spec mode">
+                    <button id="ecoBtn" type="button">Eco</button>
+                    <button id="sportBtn" type="button">Sport</button>
+                    <button id="raceBtn" type="button">Race</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main class="shell">
+        <section class="support-hero">
+            <span class="eyeline">JS Spec / Human support</span>
+            <h1>Something <span class="accent">not right?</span></h1>
+            <p class="lede">Found a broken button, have a question about OneNudge, or want to get in touch about a project? Tell me what happened and I'll take a look.</p>
+        </section>
+
+        <div class="support-grid">
+            <section class="support-card" aria-labelledby="contact-heading">
+                <h2 id="contact-heading">Send a message.</h2>
+                <p>No bots or fake ticket numbers. This form prepares an email for you to review and send from your own email app.</p>
+                <form class="support-form" id="supportForm">
+                    <div><label for="supportName">Your name</label><input id="supportName" name="name" autocomplete="name" required maxlength="100" placeholder="Your name"></div>
+                    <div><label for="supportEmail">Your email</label><input id="supportEmail" name="email" type="email" autocomplete="email" required maxlength="180" placeholder="you@example.com"></div>
+                    <div><label for="supportTopic">What can I help with?</label>
+                        <select id="supportTopic" name="topic" required>
+                            <option value="Website issue">JS Spec website issue</option>
+                            <option value="OneNudge support">OneNudge question</option>
+                            <option value="Project enquiry">Project or collaboration enquiry</option>
+                            <option value="General question">Something else</option>
+                        </select>
+                    </div>
+                    <div><label for="supportMessage">Message</label><textarea id="supportMessage" name="message" required minlength="8" maxlength="4000" placeholder="What were you trying to do? What happened instead?"></textarea></div>
+                    <button class="action-link" type="submit">Open email draft ↗</button>
+                    <p class="support-feedback" id="supportFeedback" role="status" aria-live="polite"></p>
+                </form>
+                <p class="support-note">If the form doesn't open your email app, write directly to <a class="accent" href="mailto:jsspec.contact@gmail.com">jsspec.contact@gmail.com</a>.</p>
+            </section>
+
+            <aside class="support-card">
+                <h2>Useful places.</h2>
+                <p>Start here if you're looking for a project or want to inspect the source code yourself.</p>
+                <div class="support-links">
+                    <a href="https://onenudge.jsspec.uk/">OneNudge <span aria-hidden="true">↗</span></a>
+                    <a href="https://github.com/Jessplayz2021/OneNudge" target="_blank" rel="noopener noreferrer">OneNudge source <span aria-hidden="true">↗</span></a>
+                    <a href="https://github.com/Jessplayz2021/JSspec-portfolio" target="_blank" rel="noopener noreferrer">JS Spec source <span aria-hidden="true">↗</span></a>
+                    <a href="index.html#projects">Other JS Spec projects <span aria-hidden="true">↗</span></a>
+                </div>
+            </aside>
+        </div>
+
+        <section class="faq-section" aria-labelledby="faq-heading">
+            <div class="section-intro"><div><span class="eyeline">Before you write</span><h2 id="faq-heading">Quick answers.</h2></div></div>
+            <details><summary>Does this form send the message automatically?</summary><p>No. JS Spec is currently hosted as a static website. Pressing the button opens an email draft in your configured email app. You need to press Send there.</p></details>
+            <details><summary>Can I view the source code?</summary><p>Yes. Public project repositories are linked above and from the portfolio. Some projects are still under development.</p></details>
+            <details><summary>How can I report a problem with OneNudge?</summary><p>Choose “OneNudge question” in the form, describe the steps you took and what happened, and include any error message. Please don't send passwords or other sensitive information.</p></details>
+        </section>
+    </main>
+
+    <footer class="footer shell"><span>© <span data-current-year>2026</span> Jess Bradford · JS Spec / Support</span>
+        <div><a href="index.html">Home</a><a href="sport.html">Sport</a><a href="race.html">Race</a></div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

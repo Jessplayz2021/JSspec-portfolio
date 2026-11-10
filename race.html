@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#17191b">
+    <meta name="description" content="JS Spec Race Mode: personal Forza car builds and Matsumi Climb benchmark times.">
+    <title>Race Mode — JS Spec</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modes.css">
+</head>
+<body class="subpage" data-mode="race">
+    <div class="nav-wrap">
+        <nav class="nav shell" aria-label="Main navigation">
+            <a class="brand" href="index.html"><span class="brand-mark">JS</span><span>JS SPEC</span></a>
+            <div class="nav-links"><a href="#leaderboard">Leaderboard</a><a href="sport.html">Engineering</a><a href="support.html">Support</a></div>
+            <div class="mode-wrap">
+                <button class="mode" id="settingsBtn" type="button" aria-expanded="false" aria-controls="settingsPanel">● RACE MODE</button>
+                <div class="settings-panel" id="settingsPanel" role="group" aria-label="Choose JS Spec mode">
+                    <button id="ecoBtn" type="button">Eco</button>
+                    <button id="sportBtn" type="button">Sport</button>
+                    <button id="raceBtn" type="button">Race</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main class="shell">
+        <section class="race-hero" aria-label="Race mode introduction">
+            <span class="eyeline">Mode 03 / Personal race archive</span>
+            <h1 class="race-title">FRONT GRIP.<br><em>REAR PROBLEMS.</em></h1>
+            <p class="lede">The JS Spec approach to car building: sharp front-end response, predictable rotation and just enough rear-end trouble to keep the driver honest.</p>
+            <a class="action-link" href="#leaderboard">View Matsumi times ↓</a>
+            <div class="race-stripe" aria-hidden="true"></div>
+        </section>
+
+        <section aria-label="Featured benchmarks" class="race-metrics">
+            <div class="metric"><span>ABSOLUTE / MAZDA 787B</span><strong>1:48.180</strong><small>787B · X999 · documented best</small></div>
+            <div class="metric"><span>JS OG / GRANDPA ALFA</span><strong>2:18.066</strong><small>Giulia Quadrifoglio · S2 822</small></div>
+            <div class="metric"><span>JS UHHH F*** IT / McLAREN W1</span><strong>1:58.325</strong><small>W1 · R979 · AWD</small></div>
+            <div class="metric"><span>JS F*** IT / McLAREN P1</span><strong>2:04.173</strong><small>P1 · R940 · RWD</small></div>
+        </section>
+
+        <section class="leaderboard-section" id="leaderboard">
+            <div class="section-intro">
+                <div><span class="eyeline">JS Spec / Matsumi Climb</span><h2>Lap-time archive.</h2></div>
+                <p>All 99 recorded runs from the JS Spec garage. Search for a car, filter by class, or open a build to read its JS status and notes.</p>
+            </div>
+            <div class="board-controls">
+                <label class="board-search-label" for="boardSearch">Find a build
+                    <input id="boardSearch" type="search" autocomplete="off" placeholder="Car, JS status, or notes…">
+                </label>
+                <div class="filter-bar" aria-label="Filter leaderboard by class">
+                    <button type="button" data-board-filter="all" aria-pressed="true">All <span>99</span></button>
+                    <button type="button" data-board-filter="x" aria-pressed="false">X <span>4</span></button>
+                    <button type="button" data-board-filter="r" aria-pressed="false">R <span>16</span></button>
+                    <button type="button" data-board-filter="s2" aria-pressed="false">S2 <span>52</span></button>
+                    <button type="button" data-board-filter="s1" aria-pressed="false">S1 <span>24</span></button>
+                    <button type="button" data-board-filter="a" aria-pressed="false">A <span>2</span></button>
+                    <button type="button" data-board-filter="d" aria-pressed="false">D <span>1</span></button>
+                </div>
+            </div>
+            <p class="board-result-count" id="boardResultCount" role="status" aria-live="polite">Loading the JS garage…</p>
+            <div class="table-scroll">
+                <table class="board-table" id="raceLeaderboard">
+                    <thead><tr><th scope="col">Rank</th><th scope="col">Build</th><th scope="col">Class / PI</th><th scope="col">Matsumi time</th><th scope="col">JS status</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <button class="board-more" id="boardMore" type="button" hidden>Show more runs ↓</button>
+            <p class="race-footnote">Personal Forza archive copied from Jess's 99-row Matsumi workbook, not an official global leaderboard. Times are displayed to the millisecond. Classes and PI are not performance-equivalent. Duplicate builds are retained as separate runs.</p>
+        </section>
+
+        <dialog class="build-dialog" id="buildDetails" aria-labelledby="buildDialogTitle">
+            <div class="build-dialog-head"><span class="eyeline">JS SPEC / BUILD FILE</span><button id="closeBuildDetails" type="button" aria-label="Close build details">✕</button></div>
+            <h2 id="buildDialogTitle"></h2>
+            <p class="build-dialog-meta" id="buildDialogMeta"></p>
+            <strong class="build-dialog-time" id="buildDialogTime"></strong>
+            <div class="build-dialog-block"><span>JS status</span><p id="buildDialogStatus"></p></div>
+            <div class="build-dialog-block"><span>Jess's notes</span><p id="buildDialogNotes"></p></div>
+        </dialog>
+    </main>
+
+    <footer class="footer shell"><span>© <span data-current-year>2026</span> Jess Bradford · JS Spec / Race</span>
+        <div><a href="index.html">Eco</a><a href="sport.html">Sport</a><a href="support.html">Support</a></div>
+    </footer>
+    <script src="leaderboard-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

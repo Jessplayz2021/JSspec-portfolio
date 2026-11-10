@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1d211f">
+    <meta name="description" content="JS Spec Sport Mode: Jess Bradford's software engineering workbench, experiments and active projects.">
+    <title>Sport Mode — JS Spec</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modes.css">
+</head>
+<body class="subpage" data-mode="sport">
+    <div class="nav-wrap">
+        <nav class="nav shell" aria-label="Main navigation">
+            <a class="brand" href="index.html"><span class="brand-mark">JS</span><span>JS SPEC</span></a>
+            <div class="nav-links">
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#about">About</a>
+                <a href="support.html">Support</a>
+            </div>
+            <div class="mode-wrap">
+                <button class="mode" id="settingsBtn" type="button" aria-expanded="false" aria-controls="settingsPanel">● SPORT MODE</button>
+                <div class="settings-panel" id="settingsPanel" role="group" aria-label="Choose JS Spec mode">
+                    <button id="ecoBtn" type="button">Eco</button>
+                    <button id="sportBtn" type="button">Sport</button>
+                    <button id="raceBtn" type="button">Race</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main class="shell">
+        <section class="sport-hero" aria-label="Sport mode introduction">
+            <div>
+                <span class="eyeline">Mode 02 / Developer workbench</span>
+                <h1 class="sport-title">SPORT<small>Engineering the details.</small></h1>
+                <p class="lede">A closer look under the bonnet: Python, networking, automation and the software I build to solve real problems.</p>
+                <p>No inflated performance numbers. Just the projects, decisions and experiments behind JS Spec.</p>
+                <div class="sport-actions">
+                    <a class="action-link" href="#workbench">Open the workbench ↘</a>
+                    <a class="action-link secondary" href="https://github.com/Jessplayz2021" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                </div>
+            </div>
+            <aside class="console-panel" aria-label="Sport mode console illustration">
+                <div class="console-bar"><span>JS SPEC / BUILD LOG</span><span class="console-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+                <pre><span class="prompt">$</span> js-spec --mode sport
+<span class="comment"># Developer workbench</span>
+focus = [
+  "Python",
+  "Automation",
+  "Networking"
+]
+
+status = "learning by building"
+<span class="prompt">✓</span> Ready to experiment</pre>
+            </aside>
+        </section>
+
+        <div class="sport-band" aria-label="Engineering focus areas">
+            <div><span>01 / BACKGROUND</span><strong>Mechanical → Software</strong></div>
+            <div><span>02 / PREFERRED APPROACH</span><strong>Build · Test · Refine</strong></div>
+            <div><span>03 / CURRENT DIRECTION</span><strong>Software &amp; DevOps</strong></div>
+        </div>
+
+        <section class="technical-section" id="workbench">
+            <div class="section-intro">
+                <div><span class="eyeline">Engineering log</span><h2>Projects in the workshop.</h2></div>
+                <p>Working code, experiments and ideas that are still being improved. Each one teaches me something different.</p>
+            </div>
+            <div class="technical-grid">
+                <article class="technical-card">
+                    <span class="tag">AUTOMATION / IN DEVELOPMENT</span>
+                    <span class="stamp" aria-hidden="true">01</span>
+                    <h3>OneNudge</h3>
+                    <p>Exploring ways to make student, tutor and employer communication less repetitive.</p>
+                    <a href="https://onenudge.jsspec.uk/">Visit the live project ↗</a>
+                </article>
+                <article class="technical-card">
+                    <span class="tag">PYTHON / NETWORKING</span>
+                    <span class="stamp" aria-hidden="true">02</span>
+                    <h3>JS Network Tool</h3>
+                    <p>Wi-Fi information, OS-aware diagnostics and TCP connection checks, wrapped in a desktop GUI.</p>
+                    <a href="https://github.com/Jessplayz2021/JS-Network-Scanner" target="_blank" rel="noopener noreferrer">Explore the repository ↗</a>
+                </article>
+                <article class="technical-card">
+                    <span class="tag">PYTHON / DATA STRUCTURES</span>
+                    <span class="stamp" aria-hidden="true">03</span>
+                    <h3>Dealership System</h3>
+                    <p>Simulating vehicle sales, customers and related dealership workflows, with new features being developed.</p>
+                    <a href="https://github.com/Jessplayz2021/Dealership-management-system" target="_blank" rel="noopener noreferrer">Explore the repository ↗</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer shell"><span>© <span data-current-year>2026</span> Jess Bradford · JS Spec / Sport</span>
+        <div><a href="index.html">Eco</a><a href="race.html">Race</a><a href="support.html">Support</a></div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

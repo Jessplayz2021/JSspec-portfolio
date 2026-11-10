@@ -5,23 +5,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#101619">
-    <title>Jess Bradford — JS Spec Portfolio Concept</title>
+    <title>Jess Bradford — JS Spec</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modes.css">
 </head>
 
-<body>
+<body data-mode="eco">
     <div class="nav-wrap">
         <nav class="nav shell" aria-label="Main navigation"><a class="brand" href="#top"><span
                     class="brand-mark">JS</span><span>JS SPEC</span></a>
             <div class="nav-links"><a href="#projects">Projects</a><a href="#about">About</a><a
-                    href="#contact">Contact</a></div>
-            <button class="mode" id="settingsBtn">
-                ● ECO MODE
-            </button>
-            <div class="settings-panel" id="settingsPanel">
-                <button id="ecoBtn">Eco</button>
-                <button id="sportBtn">Sport</button>
-                <button id="raceBtn">Race</button>
+                    href="#contact">Contact</a><a href="support.html">Support</a></div>
+            <div class="mode-wrap">
+                <button class="mode" id="settingsBtn" aria-expanded="false" aria-controls="settingsPanel">
+                    ● ECO MODE
+                </button>
+                <div class="settings-panel" id="settingsPanel" role="group" aria-label="Choose JS Spec mode">
+                    <button type="button" id="ecoBtn">Eco</button>
+                    <button type="button" id="sportBtn">Sport</button>
+                    <button type="button" id="raceBtn">Race</button>
+                </div>
             </div>
         </nav>
     </div>
@@ -37,7 +40,7 @@
                         class="btn secondary" href="https://github.com/Jessplayz2021" target="_blank"
                         rel="noopener">GitHub ↗</a></div>
             </div>
-            <article class="feature">
+            <a class="feature" href="https://onenudge.jsspec.uk/" aria-label="Visit OneNudge">
                 <div class="feature-head"><span>FEATURED PROJECT / 001</span><span>↗</span></div>
                 <div class="feature-identity"><span class="feature-glyph">{ }</span><span
                         class="feature-category">EDUCATION / AUTOMATION</span></div>
@@ -45,7 +48,7 @@
                 <p>Helping college tutors reduce repetitive administration through smarter communication workflows.</p>
                 <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span
                         class="chip">JavaScript</span><span class="chip">In development</span></div>
-            </article>
+            </a>
         </section>
         <p class="signature">Built with curiosity. Engineered through trial and error. <span>— JS SPEC</span></p>
         <div class="stack"><span>PYTHON</span><span>JAVASCRIPT</span><span>HTML &
@@ -116,12 +119,10 @@
             </div>
         </section>
     </main>
-    <footer id="contact" class="footer shell"><span>© <span id="year">2026</span> Jess Bradford · JS Spec · Concept
-            design</span>
+    <footer id="contact" class="footer shell"><span>© <span id="year">2026</span> Jess Bradford · JS Spec</span>
         <div><a href="mailto:jsspec.contact@gmail.com">Email</a><a href="https://github.com/Jessplayz2021">GitHub</a><a
-                href="https://www.linkedin.com/in/jess-bradford-b81227346/">LinkedIn</a></div>
+                href="https://www.linkedin.com/in/jess-bradford-b81227346/">LinkedIn</a><a href="support.html">Support</a></div>
     </footer>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
     <script src="script.js"></script>
 </body>
 
