@@ -11,7 +11,20 @@ A standalone, multi-page preview for Jess's existing JS Spec portfolio. These ar
 - `support.html` — contact form, technical help links, and FAQ.
 - `style.css` — the original portfolio styling from the uploaded file.
 - `modes.css` — additional shared controls, page-specific designs, and phone layouts.
-- `script.js` — shared mode navigation, dropdown behaviour, race filters/search, build detail popups, and email form handling.
+- `script.js` — shared mode navigation, dropdown behaviour, race filters/search, gap-to-leader, best-run-per-car toggle, build detail popups, and email form handling.
+- `tools/Update-Leaderboard.ps1` — regenerates `leaderboard-data.js` from the Matsumi `.xlsx` workbook.
+
+## Updating the leaderboard
+
+Add or edit runs in the Excel workbook, save it, then run this from the project folder:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\Update-Leaderboard.ps1 -Workbook "C:\path\to\JS_Matsumi_Leaderboard.xlsx"
+```
+
+The script reads the workbook directly (Excel can stay open), sorts every run by time, re-ranks them and overwrites `leaderboard-data.js`. It looks for a header row with **Car** (or Build), **Class**, **PI**, a **Time**/Lap column, plus optional **Status** and **Notes**. Class and PI can also be one column like `S2 822`. Times can be typed text (`2:18.066`) or real Excel times. If the runs aren't on the first sheet, add `-Sheet "Sheet name"`. Optional **Drivetrain** and **Date** columns are picked up too, and they appear in the build popup.
+
+The page works everything else out from the data: the run totals, class filter buttons and counts, gaps, class ranks and the four featured times. You don't need to edit any HTML after an update. A featured card uses its `data-feature-car` (and optional `data-feature-status`) in `race.html` to pick its run, so change those if you rename a car in the workbook.
 
 ## How to try it
 
@@ -29,7 +42,7 @@ Open `index.html` in your browser, or run the folder using VS Code Live Server. 
 
 ## Notes
 
-- The Race leaderboard uses **all 99 rows** in `JS_Matsumi_Leaderboard_Updated(2).xlsx`. It is a static snapshot, not a global or dynamically synced leaderboard. To update new runs, replace the corresponding entries in `leaderboard-data.js` and keep the list sorted by time, or regenerate the file from the newest spreadsheet. The browser's table shows the first 25 matching results at a time; use **Show more** to see the rest.
+- The Race leaderboard uses **all 99 rows** in `JS_Matsumi_Leaderboard_Updated(2).xlsx`. It is a static snapshot, not a global or dynamically synced leaderboard. To add new runs, update the workbook and run `tools/Update-Leaderboard.ps1` (see above). Don't hand-edit ranks. The browser's table shows the first 25 matching results at a time; use **Show more** to see the rest.
 - The spreadsheet has some different times from older conversation notes (for example Giulia S2 822: `2:18.066` in the workbook versus earlier `2:18.454`). This preview uses the workbook's data as supplied, without changing the spreadsheet.
 - The OneNudge link points to the separately hosted site at `https://onenudge.jsspec.uk/`.
 - The HTML/CSS/JS are plain files; there's no build process and no external front-end framework.
