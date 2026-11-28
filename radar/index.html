@@ -6,53 +6,24 @@
     <meta name="theme-color" content="#17191b">
     <meta name="robots" content="noindex, nofollow">
     <title>JS Spec</title>
-    <!-- Without JavaScript there's no check to run, so go home. -->
+    <!-- Without JavaScript there's nothing to remember, so go home. -->
     <noscript><meta http-equiv="refresh" content="0; url=../index.html"></noscript>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../modes.css">
-    <style>
-        .hub-wait { min-height: 100vh; display: grid; place-items: center; }
-        .hub-wait-mark { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-weight: 900; color: var(--race-accent); border: 1px solid #684046; background: #2b2226; animation: hub-pulse 1.2s ease-in-out infinite; }
-        @keyframes hub-pulse { 50% { opacity: .45; } }
-        @media (prefers-reduced-motion: reduce) { .hub-wait-mark { animation: none; } }
-        .hub-door { max-width: 640px; padding: 70px 0 40px; }
-        .hub-status { margin: 28px 0 22px; padding: 16px 18px; border-radius: 8px; border: 1px solid #43393c; background: #1d2022; color: #d5d6d5; font-size: 14px; }
-        .hub-status[data-state="ok"] { border-color: #4d7a54; }
-        .hub-open { display: inline-block; padding: 14px 24px; border-radius: 8px; background: var(--race-accent); color: #211919; font-weight: 850; text-decoration: none; }
-    </style>
+    <link rel="stylesheet" href="../door.css">
 </head>
-<body class="subpage" data-mode="race">
-    <!-- What everyone sees for a moment: a neutral loading mark, nothing about a hub. -->
-    <div class="hub-wait" id="hubWait" aria-busy="true"><div class="hub-wait-mark" aria-label="Loading">JS</div></div>
-
-    <!-- Only with ?stay on Jess's own device: the doorway itself. -->
-    <main class="shell" id="hubDoor" hidden>
-        <section class="hub-door" aria-labelledby="hubTitle">
+<body class="subpage" data-mode="race" data-door-target="https://jess.tail76b033.ts.net:4182/" data-door-name="Radar">
+    <main class="shell" id="doorPage" hidden>
+        <section class="door" aria-labelledby="doorTitle">
             <span class="eyeline">JS Spec / Radar</span>
-            <h1 id="hubTitle" class="race-title">PRIVATE.<br><em>JESS ONLY.</em></h1>
-            <p class="hub-status" id="hubStatus" role="status" data-state="ok"><strong>Connected.</strong> This device can reach Radar.</p>
-            <a class="hub-open" href="https://jess.tail76b033.ts.net:4182/">Open Radar →</a>
+            <h1 id="doorTitle" class="race-title">PRIVATE.<br><em>JESS ONLY.</em></h1>
+            <p class="door-note" id="doorNote"></p>
+            <div class="door-actions">
+                <a class="door-open" id="doorOpen" href="#">Open →</a>
+                <button class="door-forget" id="doorForget" type="button">Forget this device</button>
+            </div>
         </section>
     </main>
-
-    <script>
-        // jsspec.uk/radar: on Jess's own devices (signed in to Jess's private Tailscale network) the
-        // hub answers, and the page goes straight into it. Anywhere else the request fails, and the
-        // visitor is sent to the home page as if this page didn't exist. Nothing is read back
-        // (no-cors). On Jess's device, ?stay shows the doorway instead of jumping.
-        (function () {
-            const HUB = "https://jess.tail76b033.ts.net:4182/";
-            const HOME = "../index.html";
-            const stay = new URLSearchParams(location.search).has("stay");
-            const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 2500));
-            Promise.race([fetch(`${HUB}health`, { mode: "no-cors", cache: "no-store" }), timeout])
-                .then(() => {
-                    if (!stay) return location.replace(HUB);
-                    document.getElementById("hubWait").hidden = true;
-                    document.getElementById("hubDoor").hidden = false;
-                })
-                .catch(() => location.replace(HOME));
-        })();
-    </script>
+    <script src="../door.js"></script>
 </body>
 </html>
