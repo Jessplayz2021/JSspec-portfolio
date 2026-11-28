@@ -1,6 +1,7 @@
 // Private doorways (/hub, /radar). Browsers now refuse to let a public website probe private
 // network addresses, so instead of checking, the page remembers Jess's own devices:
-//   ?me      remember this browser as Jess's, then go straight in (do it once per device)
+//   ?me      remember this browser as Jess's, then go straight in (do it once per device;
+//            the private apps also do it by themselves on a device's first visit: ?me&back=...)
 //   ?stay    show the doorway instead of jumping (and a button to forget this device)
 //   ?forget  forget this browser, then go home
 // A remembered device goes straight to the private app (Tailscale plus a login check on the app
@@ -22,6 +23,15 @@
     if (params.has("me")) store.set(true);
     const mine = store.get();
 
+    // ?me&back=<url>: the private apps send a device here once by themselves, so it gets
+    // remembered without anyone typing anything, then come straight back. Only the private
+    // apps' own addresses are accepted as "back", so this can't be used to send people elsewhere.
+    if (params.has("me") && params.has("back")) {
+        const back = safeBack(params.get("back"));
+        location.replace(back || target);
+        return;
+    }
+
     if (params.has("stay")) {
         document.getElementById("doorPage").hidden = false;
         const open = document.getElementById("doorOpen");
@@ -42,4 +52,19 @@
         return;
     }
     location.replace(mine ? target : HOME);
+
+    // The return address must be https, on the same private host as this doorway's own target,
+    // and on one of the JS Spec app ports. Anything else is ignored.
+    function safeBack(raw) {
+        try {
+            const url = new URL(raw);
+            const home = new URL(target);
+            const port = Number(url.port);
+            if (url.protocol !== "https:" || url.hostname !== home.hostname || !(port >= 4174 && port <= 4199)) return null;
+            if (url.username || url.password) return null;
+            return url.href;
+        } catch {
+            return null;
+        }
+    }
 })();
