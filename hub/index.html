@@ -62,9 +62,12 @@
     </script>
     <script src="../script.js"></script>
     <script>
-        // A quick reachability check. It works only from a device on Jess's private network;
-        // anywhere else the request simply fails, and this page says so. Nothing is read back.
+        // A quick reachability check. It works only from a device on Jess's private network, and
+        // then the page goes straight into the hub. Anywhere else the request simply fails and the
+        // page says so. Nothing is read back. Add ?stay to the address to stop the automatic jump.
         (function () {
+            const HUB = "https://jess.tail76b033.ts.net:4180/";
+            const stay = new URLSearchParams(location.search).has("stay");
             const status = document.getElementById("hubStatus");
             const say = (state, strong, rest) => {
                 status.dataset.state = state;
@@ -74,8 +77,12 @@
                 status.append(s, " " + rest);
             };
             const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 4000));
-            Promise.race([fetch("https://jess.tail76b033.ts.net:4180/health", { mode: "no-cors", cache: "no-store" }), timeout])
-                .then(() => say("ok", "Connected.", "This device is on Jess's private network. Open the hub."))
+            Promise.race([fetch(`${HUB}health`, { mode: "no-cors", cache: "no-store" }), timeout])
+                .then(() => {
+                    if (stay) return say("ok", "Connected.", "This device is on Jess's private network. Open the hub.");
+                    say("ok", "Connected.", "Opening the hub…");
+                    location.replace(HUB);
+                })
                 .catch(() => say("off", "Not available from this device.", "The hub only opens on Jess's own devices."));
         })();
     </script>
