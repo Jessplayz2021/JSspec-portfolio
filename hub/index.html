@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#17191b">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="JS Spec Hub: private.">
+    <title>Hub — JS Spec</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../modes.css">
+    <style>
+        .hub-door { max-width: 640px; padding: 70px 0 40px; }
+        .hub-door .lede { max-width: 52ch; }
+        .hub-lock { display: inline-grid; place-items: center; width: 54px; height: 54px; border-radius: 14px; border: 1px solid #684046; background: #2b2226; color: var(--race-accent); font-size: 26px; margin-bottom: 22px; }
+        .hub-status { margin: 28px 0 22px; padding: 16px 18px; border-radius: 8px; border: 1px solid #43393c; background: #1d2022; color: #d5d6d5; font-size: 14px; }
+        .hub-status strong { color: #fff; }
+        .hub-status[data-state="ok"] { border-color: #4d7a54; }
+        .hub-status[data-state="ok"] strong { color: #a9ee6b; }
+        .hub-open { display: inline-block; padding: 14px 24px; border-radius: 8px; background: var(--race-accent); color: #211919; font-weight: 850; text-decoration: none; }
+        .hub-open:hover, .hub-open:focus-visible { filter: brightness(1.08); }
+        .hub-why { margin-top: 34px; color: #a5a2a3; font-size: 13px; line-height: 1.6; }
+    </style>
+</head>
+<body class="subpage" data-mode="race">
+    <div class="nav-wrap">
+        <nav class="nav shell" aria-label="Main navigation">
+            <a class="brand" href="../index.html"><span class="brand-mark">JS</span><span>JS SPEC</span></a>
+            <div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../race.html">Race</a><a href="../support.html">Support</a></div>
+            <div class="mode-wrap">
+                <button class="mode" id="settingsBtn" type="button" aria-expanded="false" aria-controls="settingsPanel">● RACE MODE</button>
+                <div class="settings-panel" id="settingsPanel" role="group" aria-label="Choose JS Spec mode">
+                    <button id="ecoBtn" type="button">Eco</button>
+                    <button id="sportBtn" type="button">Sport</button>
+                    <button id="raceBtn" type="button">Race</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main class="shell">
+        <section class="hub-door" aria-labelledby="hubTitle">
+            <div class="hub-lock" aria-hidden="true">🔒</div>
+            <span class="eyeline">JS Spec / Hub</span>
+            <h1 id="hubTitle" class="race-title">PRIVATE.<br><em>JESS ONLY.</em></h1>
+            <p class="lede">The JS Spec Hub runs on Jess's own computer. It only opens on Jess's own devices, signed in to a private network. It isn't on the public internet.</p>
+
+            <p class="hub-status" id="hubStatus" role="status" aria-live="polite"><strong>Checking…</strong> seeing whether this device can reach the hub.</p>
+
+            <a class="hub-open" id="hubOpen" href="https://jess.tail76b033.ts.net:4180/">Open the hub →</a>
+
+            <p class="hub-why">Not Jess? There's nothing to see here. The button won't connect from your device, and nothing private is stored on this website. Looking for my work? See <a href="../index.html#projects">projects</a>.</p>
+        </section>
+    </main>
+
+    <footer class="footer shell"><span>© <span data-current-year>2026</span> Jess Bradford · JS Spec</span>
+        <div><a href="../index.html">Eco</a><a href="../sport.html">Sport</a><a href="../race.html">Race</a></div>
+    </footer>
+    <script>
+        // Mode routes in script.js are relative to the site root; this page lives one folder down.
+        window.JS_SPEC_BASE = "../";
+    </script>
+    <script src="../script.js"></script>
+    <script>
+        // A quick reachability check. It works only from a device on Jess's private network;
+        // anywhere else the request simply fails, and this page says so. Nothing is read back.
+        (function () {
+            const status = document.getElementById("hubStatus");
+            const say = (state, strong, rest) => {
+                status.dataset.state = state;
+                status.replaceChildren();
+                const s = document.createElement("strong");
+                s.textContent = strong;
+                status.append(s, " " + rest);
+            };
+            const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 4000));
+            Promise.race([fetch("https://jess.tail76b033.ts.net:4180/health", { mode: "no-cors", cache: "no-store" }), timeout])
+                .then(() => say("ok", "Connected.", "This device is on Jess's private network. Open the hub."))
+                .catch(() => say("off", "Not available from this device.", "The hub only opens on Jess's own devices."));
+        })();
+    </script>
+</body>
+</html>

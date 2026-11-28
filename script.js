@@ -4,10 +4,12 @@ const settingsButton = document.getElementById("settingsBtn");
 const settingsPanel = document.getElementById("settingsPanel");
 const modeWrap = document.querySelector(".mode-wrap");
 
+// Pages in a subfolder (e.g. hub/) set window.JS_SPEC_BASE = "../" so these still point at the root.
+const routeBase = window.JS_SPEC_BASE || "";
 const modeRoutes = {
-    eco: "index.html",
-    sport: "sport.html",
-    race: "race.html"
+    eco: `${routeBase}index.html`,
+    sport: `${routeBase}sport.html`,
+    race: `${routeBase}race.html`
 };
 
 // The label follows the page, so navigating to Race never leaves it saying ECO MODE.
