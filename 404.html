@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
     <title>Not found — JS Spec</title>
-    <script>
-        // GitHub Pages paths are case-sensitive: send /Hub, /RADAR, /hub (no slash) and the like to /hub/ or /radar/.
-        const door = location.pathname.match(/^\/(hub|radar)\/?$/i);
-        if (door && location.pathname !== `/${door[1].toLowerCase()}/`) location.replace(`/${door[1].toLowerCase()}/`);
-    </script>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/modes.css">
 </head>

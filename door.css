@@ -1,8 +1,0 @@
-/* Private doorways (/hub, /radar), only ever shown with ?stay. */
-.door { max-width: 640px; padding: 70px 0 40px; }
-.door-note { margin: 26px 0 22px; padding: 16px 18px; border-radius: 8px; border: 1px solid #43393c; background: #1d2022; color: #d5d6d5; font-size: 14px; line-height: 1.55; }
-.door-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.door-open { display: inline-block; padding: 14px 24px; border-radius: 8px; background: var(--race-accent); color: #211919; font-weight: 850; text-decoration: none; }
-.door-open:hover, .door-open:focus-visible { filter: brightness(1.08); }
-.door-forget { padding: 13px 18px; border-radius: 8px; border: 1px solid #674449; background: transparent; color: #d4c5c6; font: inherit; font-weight: 750; cursor: pointer; }
-.door-forget[hidden] { display: none; }
