@@ -8,7 +8,8 @@
     <script>
         // GitHub Pages paths are case-sensitive: send /Hub, /RADAR, /hub (no slash) and the like to /hub/ or /radar/.
         const door = location.pathname.match(/^\/(hub|radar)\/?$/i);
-        if (door && location.pathname !== `/${door[1].toLowerCase()}/`) location.replace(`/${door[1].toLowerCase()}/`);
+        // Keep everything after the path (?me, ?stay, &back=…, #…) so it still does its job.
+        if (door && location.pathname !== `/${door[1].toLowerCase()}/`) location.replace(`/${door[1].toLowerCase()}/${location.search}${location.hash}`);
     </script>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/modes.css">
