@@ -1,48 +1,57 @@
-# JS Spec — Eco / Sport / Race / Support prototype
+# JS Spec
 
-A standalone, multi-page preview for Jess's existing JS Spec portfolio. These are **local prototype files**, not changes made to the public `jsspec.uk` site.
+The source of **[jsspec.uk](https://jsspec.uk)**, my personal portfolio. GitHub Pages serves the site straight from this repository, so what's on `main` is what's live.
 
-## What's included
+## What's on the site
 
-- `index.html` — the original Eco portfolio, with a working mode picker, Support link, and a linked OneNudge feature card.
-- `sport.html` — an engineering-themed workbench, with featured programming projects.
-- `race.html` — a motorsport dashboard and filterable personal Matsumi Climb leaderboard.
-- `leaderboard-data.js` — a frozen copy of all 99 spreadsheet rows, including duplicate runs, JS status, and Jess's notes.
-- `support.html` — contact form, technical help links, and FAQ.
-- `style.css` — the original portfolio styling from the uploaded file.
-- `modes.css` — additional shared controls, page-specific designs, and phone layouts.
-- `script.js` — shared mode navigation, dropdown behaviour, race filters/search, gap-to-leader, best-run-per-car toggle, build detail popups, and email form handling.
-- `tools/Update-Leaderboard.ps1` — regenerates `leaderboard-data.js` from the Matsumi `.xlsx` workbook.
+The site has three modes, picked from the menu in the top-right corner like the drive modes on a car. Each mode is its own page.
+
+| Page | What it is |
+| --- | --- |
+| **Eco** (`index.html`) | The main portfolio: who I am, selected projects, an about section and contact links. |
+| **Sport** (`sport.html`) | A developer workbench: the projects I'm working on now and how I approach them. |
+| **Race** (`race.html`) | A personal Forza archive: a leaderboard of my recorded Matsumi Climb runs. |
+| **Support** (`support.html`) | A contact form, useful links and a short FAQ. |
+
+**The Race leaderboard** is built in the browser from a snapshot of my lap-time spreadsheet (99 runs at the moment). You can search by car, status or notes, filter by class, show only the fastest run per car, and see the gap to the overall or class leader. Clicking a build opens its details, notes and any other runs of the same car. It's a personal archive, not an official or global leaderboard.
+
+**The Support form** doesn't send anything to a server. The site is static, so the form opens a pre-filled email draft in the visitor's own email app.
+
+## How it's built
+
+Plain HTML, CSS and JavaScript. No framework, no build step and no dependencies.
+
+- `style.css` holds the base styles; `modes.css` adds the mode-specific designs and phone layouts.
+- `script.js` is shared by every page. It runs the mode picker (each page sets `data-mode` on `<body>`, and the picker moves between pages), the leaderboard and the Support form.
+- `leaderboard-data.js` is the leaderboard snapshot. It's generated, not edited by hand (see below).
+
+## Run it locally
+
+Clone the repo and open `index.html` in a browser. To serve it the way GitHub Pages does, run a small static server from the project folder:
+
+```sh
+python -m http.server 8000
+```
+
+Then visit <http://localhost:8000>.
 
 ## Updating the leaderboard
 
-Add or edit runs in the Excel workbook, save it, then run this from the project folder:
+`tools/Update-Leaderboard.ps1` reads the Matsumi `.xlsx` workbook directly (Excel isn't needed), sorts and ranks every run, and rewrites `leaderboard-data.js`:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools\Update-Leaderboard.ps1 -Workbook "C:\path\to\JS_Matsumi_Leaderboard.xlsx"
+powershell -ExecutionPolicy Bypass -File tools\Update-Leaderboard.ps1 -Workbook "path\to\JS_Matsumi_Leaderboard.xlsx"
 ```
 
-The script reads the workbook directly (Excel can stay open), sorts every run by time, re-ranks them and overwrites `leaderboard-data.js`. It looks for a header row with **Car** (or Build), **Class**, **PI**, a **Time**/Lap column, plus optional **Status** and **Notes**. Class and PI can also be one column like `S2 822`. Times can be typed text (`2:18.066`) or real Excel times. If the runs aren't on the first sheet, add `-Sheet "Sheet name"`. Optional **Drivetrain** and **Date** columns are picked up too, and they appear in the build popup.
+The page works everything else out from the data (run totals, class filters, gaps and the featured times), so no HTML changes are needed after an update. `Get-Help tools\Update-Leaderboard.ps1 -Full` lists the column headers it recognises.
 
-The page works everything else out from the data: the run totals, class filter buttons and counts, gaps, class ranks and the four featured times. You don't need to edit any HTML after an update. A featured card uses its `data-feature-car` (and optional `data-feature-status`) in `race.html` to pick its run, so change those if you rename a car in the workbook.
+## Deployment
 
-## How to try it
+The site is hosted on GitHub Pages from the root of the `main` branch. The `CNAME` file points it at the custom domain `jsspec.uk`, with HTTPS enforced. Pushing to `main` publishes the site.
 
-Open `index.html` in your browser, or run the folder using VS Code Live Server. Select **Eco**, **Sport**, or **Race** in the top-right menu. Use **Support** from the navigation or footer.
+## Other JS Spec projects
 
-## Integrating with the live GitHub project
-
-**Compare and merge files first — don't blindly overwrite your latest local copies.** The source for this prototype was the HTML, CSS, and JS you attached on 10 November; any newer edits on your PC should be preserved.
-
-1. Keep `index.html`, `sport.html`, `race.html`, `support.html`, `style.css`, `modes.css`, `leaderboard-data.js`, and `script.js` together at your site's root.
-2. Make sure every page loads `style.css` followed by `modes.css`, with `script.js` just before the closing `</body>`.
-3. Each page has a `<body data-mode="eco">`, `sport`, or `race` value. The JavaScript uses this to label the mode button and determine which interface is active.
-4. The mode picker navigates to separate pages; it no longer just recolours the current page. Change routes in the `modeRoutes` object near the top of `script.js` if you reorganise folders.
-5. The Support form uses `mailto:`. It **opens an email draft** in the visitor's email application; it does not create a support ticket or submit data to a server. For real ticket submissions, a backend or third-party form service would be needed.
-
-## Notes
-
-- The Race leaderboard uses **all 99 rows** in `JS_Matsumi_Leaderboard_Updated(2).xlsx`. It is a static snapshot, not a global or dynamically synced leaderboard. To add new runs, update the workbook and run `tools/Update-Leaderboard.ps1` (see above). Don't hand-edit ranks. The browser's table shows the first 25 matching results at a time; use **Show more** to see the rest.
-- The spreadsheet has some different times from older conversation notes (for example Giulia S2 822: `2:18.066` in the workbook versus earlier `2:18.454`). This preview uses the workbook's data as supplied, without changing the spreadsheet.
-- The OneNudge link points to the separately hosted site at `https://onenudge.jsspec.uk/`.
-- The HTML/CSS/JS are plain files; there's no build process and no external front-end framework.
+- **[JS SPEC // TUNE](https://github.com/Jessplayz2021/js-spec-tune)**: a tuning calculator for Forza-style racing games. Live at [tune.jsspec.uk](https://tune.jsspec.uk).
+- **[JS SPEC // GARAGE DRAFT](https://github.com/Jessplayz2021/js-spec-garage)**: a car-building draft game that predicts a build's Matsumi time from real runs.
+- **[OneNudge](https://github.com/Jessplayz2021/OneNudge)**: message templates for apprenticeship tutors. Live at [onenudge.jsspec.uk](https://onenudge.jsspec.uk).
+- **[JS SPEC // DAILY LOG](https://github.com/Jessplayz2021/js-spec-log)**: an automated, honest log of my GitHub work.
